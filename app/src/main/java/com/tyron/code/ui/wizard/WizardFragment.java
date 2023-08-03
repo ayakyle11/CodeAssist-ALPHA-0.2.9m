@@ -82,7 +82,7 @@ public class WizardFragment extends Fragment {
 
   private boolean mLast;
   private boolean mShowDialogOnPermissionGrant = false;
-  private boolean mUseInternalStorage = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R;
+  private boolean mUseInternalStorage = true;
 
   private WizardTemplate mCurrentTemplate;
   private MaterialToolbar toolbar;

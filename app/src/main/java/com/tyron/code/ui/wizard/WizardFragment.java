@@ -81,7 +81,7 @@ public class WizardFragment extends Fragment {
   private View mWizardDetailsView;
 
   private boolean mLast;
-  private boolean mShowDialogOnPermissionGrant = false;
+  private boolean mShowDialogOnPermissionGrant = true;
   private boolean mUseInternalStorage = true;
 
   private WizardTemplate mCurrentTemplate;
@@ -322,33 +322,33 @@ public class WizardFragment extends Fragment {
           .getEditText()
           .setText("storage/emulated/0/Android/data/com.tyron.code/files/Projects");
     }
-    //        mSaveLocationLayout.setEndIconOnClickListener(view -> {
-    //            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-    //                if (isGrantedStoragePermission()) {
-    //                    showDirectoryPickerDialog();
-    //                } else if (shouldShowRequestPermissionRationale()) {
-    //                    new MaterialAlertDialogBuilder(view.getContext())
-    //                            .setMessage("The application needs storage permissions in order to
-    // save project files that " +
-    //                                    "will not be deleted when you uninstall the app.
-    // Alternatively you can choose to " +
-    //                                    "save project files into the app's internal storage.")
-    //                            .setPositiveButton("Allow", (d, which) -> {
-    //                                mShowDialogOnPermissionGrant = true;
-    //                                requestPermissions();
-    //                            })
-    //                            .setNegativeButton("Use internal storage", (d, which) -> {
-    //                                mUseInternalStorage = true;
-    //                                initializeSaveLocation();
-    //                            })
-    //                            .setTitle("Storage permissions")
-    //                            .show();
-    //                } else {
-    //                    mShowDialogOnPermissionGrant = true;
-    //                    requestPermissions();
-    //                }
-    //            }
-    //        });
+            mSaveLocationLayout.setEndIconOnClickListener(view -> {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    if (isGrantedStoragePermission()) {
+                        showDirectoryPickerDialog();
+                    } else if (shouldShowRequestPermissionRationale()) {
+                        new MaterialAlertDialogBuilder(view.getContext())
+                                .setMessage("The application needs storage permissions in order to
+     save project files that " +
+                                        "will not be deleted when you uninstall the app.
+     Alternatively you can choose to " +
+                                        "save project files into the app's internal storage.")
+                                .setPositiveButton("Allow", (d, which) -> {
+                                    mShowDialogOnPermissionGrant = true;
+                                    requestPermissions();
+                                })
+                                .setNegativeButton("Use internal storage", (d, which) -> {
+                                    mUseInternalStorage = true;
+                                    initializeSaveLocation();
+                                })
+                                .setTitle("Storage permissions")
+                                .show();
+                    } else {
+                        mShowDialogOnPermissionGrant = true;
+                        requestPermissions();
+                    }
+                }
+            });
   }
 
   @SuppressLint("SetTextI18n")

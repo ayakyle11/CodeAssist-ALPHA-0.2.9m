@@ -316,12 +316,11 @@ public class WizardFragment extends Fragment {
   }
 
   private void initializeSaveLocation() {
-    if (mUseInternalStorage) {
-      mSaveLocationLayout.setHelperText(getString(R.string.wizard_scoped_storage_info));
-      mSaveLocationLayout
-          .getEditText()
-          .setText("storage/emulated/0/Android/data/com.tyron.code/files/Projects");
-    }
+    mSaveLocationLayout.setHelperText(getString(R.string.wizard_scoped_storage_info));
+    mSaveLocationLayout.setEnabled(false);
+    mSaveLocationLayout.getEditText().setText("storage/emulated/0/Android/data/com.tyron.code/files/Projects");
+  }
+
 //            mSaveLocationLayout.setEndIconOnClickListener(view -> {
 //                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
  //                   if (isGrantedStoragePermission()) {
@@ -349,7 +348,7 @@ public class WizardFragment extends Fragment {
      //               }
      //           }
      //       });
-  }
+  
 
   @SuppressLint("SetTextI18n")
   private void showDirectoryPickerDialog() {

@@ -317,7 +317,7 @@ public class WizardFragment extends Fragment {
 
   private void initializeSaveLocation() {
     mSaveLocationLayout.setHelperText(getString(R.string.wizard_scoped_storage_info));
-    mSaveLocationLayout.setEnabled(false);
+    mSaveLocationLayout.setEnabled(true);
     mSaveLocationLayout.getEditText().setText("storage/emulated/0/Android/data/com.tyron.code/files/Projects");
   }
 

@@ -340,7 +340,7 @@ public class ProjectSheetFragment extends BottomSheetDialogFragment {
         .execute(
             () -> {
               String path;
-              if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+              if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 path = requireContext().getExternalFilesDir("/Projects").getAbsolutePath();
               } else {
                 path = Environment.getExternalStorageDirectory() + "/CodeAssistProjects";
